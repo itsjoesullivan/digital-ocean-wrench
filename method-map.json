@@ -1,0 +1,84 @@
+{
+  "actions": {
+    "list": "listAllActions",
+    "get": "retrieveExistingAction"
+  },
+  "domains": {
+    "list": "listAllDomains",
+    "create": "createNewDomains",
+    "get": "retrieveExistingDomain",
+    "delete": "deleteDomain"
+  },
+  "domain-records": {
+    "list": "listAllDomainRecords",
+    "create": "createNewDomainRecord",
+    "get": "retrieveExistingDomainRecord",
+    "update": "updateDomainRecord",
+    "delete": "deleteDomainRecord"
+  },
+  "droplets": {
+    "create": "createNewDroplet",
+    "create-multiple": "createMultipleDroplets",
+    "get": "retrieveExistingDropletById",
+    "list": "listAllDroplets",
+    "kernels": "listAllAvailableKernelsForDroplet",
+    "snapshots": "listSnapshotsForDroplet",
+    "backups": "listBackupsForDroplet",
+    "list-actions": "listActionsForDroplet",
+    "neighbors": "lisNeighborsForDroplet",
+    "list-all-neighbors": "listAllDropletNeighbors",
+    "upgrades": "lostDropletUpgrades",
+    "enable-backups": "enableBackups",
+    "disable-backups": "disableBackups",
+    "reboot": "rebootDroplet",
+    "power-cycle": "powerCycleDroplet",
+    "shutdown": "shutdownDroplet",
+    "power-off": "powerOffDroplet",
+    "power-on": "powerOnDroplet",
+    "restore": "restoreDroplet",
+    "password-reset": "passwordResetDroplet",
+    "resize": "resizeDroplet",
+    "rebuild": "rebuildDroplet",
+    "rename": "renameDroplet",
+    "change-kernel": "changeKernel",
+    "enable-ipv6": "enableIPv6",
+    "enable-private-networking": "enablePrivateNetworking",
+    "snapshot": "snapshotDroplet",
+    "upgrade": "upgradeDroplet",
+    "get-action": "retrieveDropletAction"
+  },
+  "images": {
+    "list": "listAllImages",
+    "get-by-id": "updateImage",
+    "get-by-slug": "deleteImage",
+    "list-actions": "listAllActionsForImage",
+    "update": "updateImage",
+    "delete": "deleteImage",
+    "transfer": "transferImage",
+    "convert-to-snapshot": "convertImageToSnapshot",
+    "get-action": "retrieveExistingImageAction"
+  },
+  "ssh-keys": {
+    "list": "listAllKeys",
+    "create": "createNewKey",
+    "get": "retrieveExistingKey",
+    "update": "updateKey",
+    "destroy": "destroyKey"
+  },
+  "regions": {
+    "list": "listAllRegions"
+  },
+  "sizes": {
+    "list": "listAllSizes"
+  },
+  "floating-ips": {
+    "list": "listAllFloatingIPs",
+    "create": "createNewFloatingIPReservedToRegion",
+    "get": "retrieveExistingFloatingIP",
+    "delete": "deleteFloatingIP",
+    "assign": "assignFloatingIPToDroplet",
+    "unassign": "unassignFloatingIP",
+    "list-actions": "listAllActionsForFloatingIP",
+    "get-action": "retrieveExistingFloatingAction"
+  }
+}
