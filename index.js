@@ -99,6 +99,8 @@ if (missingProps.length) {
   process.exit(1);
 }
 
+var logData = require('./logData');
+
 var method = getMethod(nameToPropertyName(categoryName), methodName);
 method.apply(null, argv._.slice(2).concat([argv])).then(function(d) {
   if (argv.raw) {
@@ -111,35 +113,3 @@ method.apply(null, argv._.slice(2).concat([argv])).then(function(d) {
   console.log(chalk.yellow(response.error.message));
   process.exit(1);
 });
-
-function logData(data) {
-  if (!data) {
-    console.log('success');
-    process.exit(0);
-  }
-  var key = Object.keys(data)[0];
-  if (key) {
-    console.log(key + ':');
-    switch (key) {
-      case 'ssh_keys':
-        data[key].forEach(function(key) {
-          console.log(key.name + '\t\t' + key.fingerprint);
-        });
-        break;
-      case 'floating_ip':
-        var item = data[key];
-        console.log(item.ip + '\t\t' + item.region.slug);
-        break;
-      case 'floating_ips':
-        data[key].forEach(function(data) {
-          console.log(data.ip + '\t\t' + data.region.slug);
-        });
-      default:
-        console.log(chalk.red('logger for data type "' + key +
-              '" not implemented!\ntry --raw flag or open an issue (pr better)'));
-        break;
-    }
-  } else {
-    console.log('success');
-  }
-}
