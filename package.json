@@ -17,6 +17,6 @@
     "yargs": "^3.31.0"
   },
   "bin": {
-    "dow": "./bin/dow"
+    "dow": "./index.js"
   }
 }
