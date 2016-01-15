@@ -1,5 +1,5 @@
 var DigitalOceanAPI = require('digital-ocean-api-v2');
-var api = new DigitalOceanAPI(process.env.DIGITALOCEAN_ACCESS_TOKEN);
+var api = new DigitalOceanAPI(require('yargs').argv.token || process.env.DIGITALOCEAN_ACCESS_TOKEN);
 module.exports = function(category, methodName) {
   var cat;
   cat = api[category];

@@ -102,7 +102,8 @@ if (missingProps.length) {
 var logData = require('./logData');
 
 var method = getMethod(nameToPropertyName(categoryName), methodName);
-method.apply(null, argv._.slice(2).concat([argv])).then(function(d) {
+var methodArgs = argv._.slice(2).concat([_.omit(argv, ['token', '_', '$0'])]);
+method.apply(null, methodArgs).then(function(d) {
   if (argv.raw) {
     console.log(JSON.stringify(d, null, 2));
   } else {
