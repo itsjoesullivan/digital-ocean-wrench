@@ -1,19 +1,14 @@
 {
   "name": "dow",
   "version": "1.0.0",
-  "description": "",
+  "description": "CLI to Digital Ocean API",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.1",
     "digital-ocean-api-v2": "^0.1.1",
     "lodash": "^4.0.0",
-    "to-camel-case": "^0.2.1",
-    "to-snake-case": "^0.1.2",
     "yargs": "^3.31.0"
   },
   "bin": {

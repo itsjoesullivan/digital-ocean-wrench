@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
 var chalk = require('chalk');
-var camel = require('to-camel-case');
-var snake = require('to-snake-case');
 var _ = require('lodash');
 
 var argv = require('yargs').argv;
