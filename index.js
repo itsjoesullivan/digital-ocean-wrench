@@ -76,7 +76,11 @@ function usage(schema) {
       if (prop.required) {
         return '\n\t\t--' + prop.name + '=<value>';
       } else {
-        return '\n\t\t[--' + prop.name + '=<value>]';
+        if (prop.name === "ssh_keys") {
+          return '\n\t\t[--' + prop.name + '=<value-1>,<value-2>,...]';
+        } else {
+          return '\n\t\t[--' + prop.name + '=<value>]';
+        }
       }
     }).join(' ');
   console.log(usageString);
@@ -103,7 +107,11 @@ if (missingProps.length) {
 var logData = require('./lib/logData');
 
 var method = getMethod(nameToPropertyName(categoryName), methodName);
-var methodArgs = argv._.slice(2).concat([_.omit(argv, ['token', '_', '$0'])]);
+var optionsObject = _.omit(argv, ['token', '_', '$0']);
+if (optionsObject.ssh_keys) {
+  optionsObject.ssh_keys = optionsObject.ssh_keys.toString().split(',');
+}
+var methodArgs = argv._.slice(2).concat([optionsObject]);
 
 if (/delete/i.test(methodSchema.method)) {
   inquirer.prompt([{
