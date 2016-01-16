@@ -1,4 +1,4 @@
-var schemas = require('digital-ocean-api-v2/parsed-schema');
+var schemas = require('parsed-digital-ocean-api-documentation');
 module.exports = function(categoryName, methodName) {
   var method;
   schemas.some(function(schemaCategory) {

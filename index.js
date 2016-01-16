@@ -69,7 +69,7 @@ function usage(schema) {
     categoryName + ' ' +
     methodAlias + ' ' +
     args.join(' ') +
-    schema.requiredProperties.map(function(prop) {
+    schema.properties.map(function(prop) {
       if (prop.required) {
         return '\n\t\t--' + prop.name + '=<value>';
       } else {
@@ -88,7 +88,7 @@ if (resourceIds.length < methodSchema.requiredResourceIdCount) {
 var props = Object.keys(argv).filter(function(item) {
   return !/^\$/.test(item) && item !== "_";
 });
-var requiredKeys = _(methodSchema.requiredProperties
+var requiredKeys = _(methodSchema.properties
     .filter(function(prop) { return prop.required; })).map('name').value();
 var missingProps = _.without.apply(_, [requiredKeys].concat(props));
 
