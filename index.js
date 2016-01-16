@@ -8,7 +8,7 @@ var argv = require('yargs').argv;
 var getCategoryName = require('./getCategoryName');
 var getMethodName = require('./getMethodName');
 var getMethodSchema = require('./getMethodSchema');
-var getMethod = require('./getMethod');
+var getMethod = require('./lib/getMethod');
 
 var categoryAlias = argv._[0];
 var methodAlias = argv._[1];
