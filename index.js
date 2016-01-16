@@ -2,6 +2,8 @@
 
 var chalk = require('chalk');
 var _ = require('lodash');
+var Spin = require('io-spin');
+var inquirer = require("inquirer");
 
 var argv = require('yargs').argv;
 
@@ -33,6 +35,7 @@ if (!methodName) {
 
 function nameToPropertyName(name) {
   var map = {
+    "account": "account",
     "actions": "actions",
     "domains": "domains",
     "domain-records": "domainRecords",
@@ -101,14 +104,47 @@ var logData = require('./lib/logData');
 
 var method = getMethod(nameToPropertyName(categoryName), methodName);
 var methodArgs = argv._.slice(2).concat([_.omit(argv, ['token', '_', '$0'])]);
-method.apply(null, methodArgs).then(function(d) {
-  if (argv.raw) {
-    console.log(JSON.stringify(d, null, 2));
-  } else {
-    logData(d);
+
+if (/delete/i.test(methodSchema.method)) {
+  inquirer.prompt([{
+    type: "input",
+    name: "answer",
+    message: "Please confirm your desire to perform DELETE operation (y/N).",
+    default: "N"
+  }], function(answers) {
+    if (answers.answer === "y") {
+      startAction();
+    } else {
+      console.log('Cancelled.');
+      process.exit(1);
+    }
+  });
+} else {
+  startAction();
+}
+
+function startAction() {
+  if (!argv.raw) {
+    var spin = new Spin('Spin4');
+    spin.start();
   }
-  process.exit(0);
-}, function(response) {
-  console.log(chalk.yellow(response.error.message));
-  process.exit(1);
-});
+  function successHandler(d) {
+    if (d && d.droplet && d.droplet.status === "new") {
+      setTimeout(function() {
+        getMethod('droplets', 'retrieveExistingDropletById')(d.droplet.id).then(successHandler, errorHandler);
+      }, 1000);
+      return;
+    }
+    if (argv.raw) {
+      console.log(JSON.stringify(d, null, 2));
+    } else {
+      logData(d);
+    }
+    process.exit(0);
+  }
+  function errorHandler(response) {
+    console.log(chalk.yellow(response.error.message));
+    process.exit(1);
+  }
+  method.apply(null, methodArgs).then(successHandler, errorHandler);
+}

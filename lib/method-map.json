@@ -1,4 +1,7 @@
 {
+  "account": {
+    "get": "getUserInformation"
+  },
   "actions": {
     "list": "listAllActions",
     "get": "retrieveExistingAction"
@@ -19,6 +22,7 @@
   "droplets": {
     "create": "createNewDroplet",
     "create-multiple": "createMultipleDroplets",
+    "destroy": "deleteDroplet",
     "get": "retrieveExistingDropletById",
     "list": "listAllDroplets",
     "kernels": "listAllAvailableKernelsForDroplet",
