@@ -5,9 +5,9 @@ var _ = require('lodash');
 
 var argv = require('yargs').argv;
 
-var getCategoryName = require('./getCategoryName');
-var getMethodName = require('./getMethodName');
-var getMethodSchema = require('./getMethodSchema');
+var getCategoryName = require('./lib/getCategoryName');
+var getMethodName = require('./lib/getMethodName');
+var getMethodSchema = require('./lib/getMethodSchema');
 var getMethod = require('./lib/getMethod');
 
 var categoryAlias = argv._[0];
@@ -15,7 +15,7 @@ var methodAlias = argv._[1];
 
 var categoryName = getCategoryName(categoryAlias);
 if (!categoryName) {
-  var map = require('./method-map');
+  var map = require('./lib/method-map');
   var categories = Object.keys(map);
   console.log(chalk.yellow('usage: dow <command>\n'));
   console.log('where <command> is one of:\n\n\t' + categories.join('\n\t'));
@@ -24,7 +24,7 @@ if (!categoryName) {
 
 var methodName = getMethodName(categoryName, methodAlias);
 if (!methodName) {
-  var map = require('./method-map');
+  var map = require('./lib/method-map');
   var methods = Object.keys(map[categoryName]);
   console.log(chalk.yellow('usage: dow ' + categoryName + ' <method>\n'));
   console.log('where <method> is one of:\n\n\t' + methods.join('\n\t'));
@@ -97,7 +97,7 @@ if (missingProps.length) {
   process.exit(1);
 }
 
-var logData = require('./logData');
+var logData = require('./lib/logData');
 
 var method = getMethod(nameToPropertyName(categoryName), methodName);
 var methodArgs = argv._.slice(2).concat([_.omit(argv, ['token', '_', '$0'])]);
