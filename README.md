@@ -81,5 +81,7 @@ Output tries to be common sense, but [logData](./lib/logData.js) could use some 
 
 ###Special flags
 
-- `--raw` - log out Digital Ocean's JSON response
-- `--token=<token>` - add token in manually if you like
+Flag              | Explanation
+-------------     | -------------
+`--raw`           | only write out Digital Ocean's JSON response
+`--token=<token>` | manually provide access token
