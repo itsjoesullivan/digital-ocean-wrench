@@ -12,7 +12,7 @@ Complete CLI to the Digital Ocean API
 
 ###Usage
 
-The tool will pretty much explain how to use it. Top-level lists categories:
+For now, the tool will pretty much explain how to use it. (Methods map pretty simply to the official [documentation](https://developers.digitalocean.com/documentation/v2/).) Top-level lists categories:
 
 ```bash
 $ dow
