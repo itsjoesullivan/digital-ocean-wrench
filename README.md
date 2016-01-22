@@ -9,6 +9,8 @@ Complete CLI to the Digital Ocean API
 
 ###Usage
 
+The tool will pretty much explain how to use it. Top-level lists categories:
+
 ```bash
 $ dow
 
@@ -26,3 +28,35 @@ where <command> is one of:
   sizes
   floating-ips
 ```
+
+Categories list methods:
+
+```bash
+$ dow images
+
+usage: dow images <method>
+
+where <method> is one of:
+
+list
+get-by-id
+get-by-slug
+list-actions
+update
+delete
+transfer
+convert-to-snapshot
+get-action
+```
+
+And methods explain themselves when misused:
+
+```bash
+$ dow images get-by-slug
+
+usage: dow images get-by-slug <image-id>
+```
+
+###Special flags
+
+--raw - log out Digital Ocean's JSON response
