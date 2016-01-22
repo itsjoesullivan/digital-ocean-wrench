@@ -7,9 +7,7 @@ Complete CLI to the Digital Ocean API
 
 - `npm install -g dow`
 
-- It will look for a DIGITALOCEAN_ACCESS_TOKEN variable. In other words, you can authenticate by adding the following to your `.profile`:
-
-`export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"`
+- It will look for a DIGITALOCEAN_ACCESS_TOKEN variable. In other words, you can authenticate by adding the following to your `.profile`: `export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"`
 
 
 ###Usage
@@ -60,6 +58,23 @@ And methods explain themselves when misused:
 $ dow images get-by-slug
 
 usage: dow images get-by-slug <image-id>
+```
+
+or
+
+```bash
+$ dow droplet create
+
+usage: dow droplets create 
+  --name=<value> 
+  --region=<value> 
+  --size=<value> 
+  --image=<value> 
+  [--ssh_keys=<value-1>,<value-2>,...] 
+  [--backups=<value>] 
+  [--ipv6=<value>] 
+  [--private_networking=<value>] 
+  [--user_data=<value>]
 ```
 
 ###Special flags
