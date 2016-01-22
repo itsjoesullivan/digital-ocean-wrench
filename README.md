@@ -79,4 +79,5 @@ usage: dow droplets create
 
 ###Special flags
 
---raw - log out Digital Ocean's JSON response
+- `--raw` - log out Digital Ocean's JSON response
+- `--token=<token>` - add token in manually if you like
