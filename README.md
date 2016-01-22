@@ -5,7 +5,12 @@ Complete CLI to the Digital Ocean API
 
 ###Installation
 
-`npm install -g dow`
+- `npm install -g dow`
+
+- It will look for a DIGITALOCEAN_ACCESS_TOKEN variable. In other words, you can authenticate by adding the following to your `.profile`:
+
+`export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"`
+
 
 ###Usage
 
