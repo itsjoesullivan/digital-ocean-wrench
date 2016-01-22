@@ -77,6 +77,8 @@ usage: dow droplets create
   [--user_data=<value>]
 ```
 
+Output tries to be common sense, but [logData](./lib/logData.js) could use some love. You can use `--raw` to get just the JSON response.
+
 ###Special flags
 
 - `--raw` - log out Digital Ocean's JSON response
