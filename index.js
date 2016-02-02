@@ -139,7 +139,7 @@ function startAction() {
   function successHandler(d) {
     if (d && d.droplet && d.droplet.status === "new") {
       setTimeout(function() {
-        getMethod('droplets', 'retrieveExistingDropletById')(d.droplet.id).then(successHandler, errorHandler);
+        getMethod('droplets', 'retrieveExistingDropletById')(d.droplet.id, { page: argv.page }).then(successHandler, errorHandler);
       }, 1000);
       return;
     }
