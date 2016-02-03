@@ -52,7 +52,6 @@ function nameToPropertyName(name) {
 var methodSchema = getMethodSchema(nameToPropertyName(categoryName), methodName);
 if (!methodSchema) {
   var otherName = nameToPropertyName(categoryName).replace(/s$/,'') + 'Actions';
-  console.log('this one');
   var methodSchema = getMethodSchema(otherName, methodName);
 }
 
