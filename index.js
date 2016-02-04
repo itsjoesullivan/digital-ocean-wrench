@@ -136,6 +136,24 @@ function startAction() {
     spin.start();
   }
   function successHandler(d) {
+    if (d && d.action) {
+      if (d.action.resource_type === "floating_ip") {
+        if (d.action.status === "in-progress") {
+          setTimeout(function() {
+            var method = getMethod('actions', 'retrieveExistingAction');
+            method(d.action.id).then(successHandler, errorHandler);
+          }, 1000);
+        } else {
+          if (argv.raw) {
+            console.log(JSON.stringify(d, null, 2));
+          } else {
+            logData(d);
+          }
+          process.exit(0);
+        }
+      }
+      return;
+    }
     if (d && d.droplet && d.droplet.status === "new") {
       setTimeout(function() {
         getMethod('droplets', 'retrieveExistingDropletById')(d.droplet.id, { page: argv.page }).then(successHandler, errorHandler);
