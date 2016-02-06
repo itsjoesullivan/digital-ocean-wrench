@@ -113,19 +113,29 @@ if (optionsObject.ssh_keys) {
 var methodArgs = argv._.slice(2).concat([optionsObject]);
 
 if (/delete/i.test(methodSchema.method)) {
-  inquirer.prompt([{
-    type: "input",
-    name: "answer",
-    message: "Please confirm your desire to perform DELETE operation (y/N).",
-    default: "N"
-  }], function(answers) {
-    if (answers.answer === "y") {
-      startAction();
-    } else {
-      console.log('Cancelled.');
-      process.exit(1);
+  function goAhead() {
+    startAction();
+  }
+  if (argv.force === true) {
+    if (!argv.raw) {
+      console.warn(chalk.yellow("Force flag active. Deleting without manual confirmation."));
     }
-  });
+    goAhead();
+  } else {
+    inquirer.prompt([{
+      type: "input",
+      name: "answer",
+      message: "Please confirm your desire to perform DELETE operation (y/N).",
+      default: "N"
+    }], function(answers) {
+      if (answers.answer === "y") {
+        goAhead();
+      } else {
+        console.log('Cancelled.');
+        process.exit(1);
+      }
+    });
+  }
 } else {
   startAction();
 }
