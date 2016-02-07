@@ -13,7 +13,7 @@ Complete CLI to the Digital Ocean API
 export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"
 ```
 
-You can additionally pass your token via the `--token` flag (see [special flags](#special-flags)).
+If you really want, you can additionally pass your token via the `--token` flag (see [special flags](#special-flags)). Read [here](http://stackoverflow.com/questions/8473121/execute-command-without-keeping-it-in-history) about how to keep such commands out of your history.
 
 ###Usage
 
