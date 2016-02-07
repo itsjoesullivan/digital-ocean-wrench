@@ -77,11 +77,13 @@ usage: dow droplets create
   [--user_data=<value>]
 ```
 
-Output tries to be common sense, but [logData](./lib/logData.js) could use some love. You can use `--raw` to get just the JSON response.
+Output tries to be common sense, but [logData](./lib/logData.js) needs some love. You can use `--raw` to get just the JSON response.
 
 ###Special flags
 
 Flag              | Explanation
 -------------     | -------------
-`--raw`           | only write out Digital Ocean's JSON response
-`--token=<token>` | manually provide access token
+`--raw`           | Only write out Digital Ocean's JSON response
+`--token=<token>` | Manually provide access token
+`--no-wait`       | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status
+`--no-spin`       | Do not show a spinner

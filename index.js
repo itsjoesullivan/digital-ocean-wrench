@@ -141,33 +141,36 @@ if (/delete/i.test(methodSchema.method)) {
 }
 
 function startAction() {
-  if (!argv.raw) {
+
+  if (!argv.raw && (argv.spin !== false)) {
     var spin = new Spin('Spin4');
     spin.start();
   }
+
   function successHandler(d) {
-    if (d && d.action) {
-      if (d.action.status === "in-progress") {
-        setTimeout(function() {
-          var method = getMethod('actions', 'retrieveExistingAction');
-          method(d.action.id).then(successHandler, errorHandler);
-        }, 1000);
-      } else {
-        if (argv.raw) {
-          console.log(JSON.stringify(d, null, 2));
-        } else {
-          logData(d);
-        }
-        process.exit(0);
-      }
+
+    /*
+     *  Wait for in-progress actions to reach a solution
+     */
+    if ((argv.wait !== false) && d && d.action && d.action.status === "in-progress") {
+      setTimeout(function() {
+        var method = getMethod('actions', 'retrieveExistingAction');
+        method(d.action.id).then(successHandler, errorHandler);
+      }, 1000);
       return;
     }
-    if (d && d.droplet && d.droplet.status === "new") {
+
+    /*
+     *  When creating a droplet, it comes back as "new". Waiting for that to change
+     *  means that you end up with a fully initialized (and booted) droplet.
+     */
+    if ((argv.wait !== false) && d && d.droplet && d.droplet.status === "new") {
       setTimeout(function() {
         getMethod('droplets', 'retrieveExistingDropletById')(d.droplet.id, { page: argv.page }).then(successHandler, errorHandler);
       }, 1000);
       return;
     }
+
     if (argv.raw) {
       console.log(JSON.stringify(d, null, 2));
     } else {
@@ -175,9 +178,11 @@ function startAction() {
     }
     process.exit(0);
   }
+
   function errorHandler(response) {
     console.log(chalk.yellow(response.error.message));
     process.exit(1);
   }
+
   method.apply(null, methodArgs).then(successHandler, errorHandler);
 }
