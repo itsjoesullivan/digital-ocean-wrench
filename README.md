@@ -7,8 +7,13 @@ Complete CLI to the Digital Ocean API
 
 - `npm install -g dow`
 
-- It will look for a DIGITALOCEAN_ACCESS_TOKEN variable. In other words, you can authenticate by adding the following to your `.profile`: `export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"`
+`dow` will look for a `DIGITALOCEAN_ACCESS_TOKEN` environment variable. You can create one [here](https://cloud.digitalocean.com/settings/api/tokens), and surface it by adding the following to your `.profile`/`.bash_profile`/etc.:
 
+```bash
+export DIGITALOCEAN_ACCESS_TOKEN="<your-access-token>"
+```
+
+You can additionally pass your token via the `--token` flag (see [special flags](#special-flags)).
 
 ###Usage
 
