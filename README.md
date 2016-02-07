@@ -81,9 +81,9 @@ Output tries to be common sense, but [logData](./lib/logData.js) needs some love
 
 ###Special flags
 
-Flag              | Explanation
--------------     | -------------
-`--raw`           | Only write out Digital Ocean's JSON response
-`--token=<token>` | Manually provide access token
-`--no-wait`       | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status
-`--no-spin`       | Do not show a spinner
+Flag                      | Explanation
+---------------------     | -------------
+`--raw`                   | Only write out Digital Ocean's JSON response
+`--token=<token>`         | Manually provide access token
+`--no-wait`               | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status
+`--no-spin`               | Do not show a spinner
