@@ -90,5 +90,5 @@ Special Flag                      | Explanation
 ---------------------     | -------------
 `--raw`                   | Only write out Digital Ocean's JSON response
 `--token=<token>`         | Manually provide access token
-`--no-wait`               | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status
+`--no-wait`               | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status. Without `--no-wait`, `dow` will poll new actions and droplets until they reach a resolution.
 `--no-spin`               | Do not show a spinner
