@@ -5,7 +5,7 @@ Complete CLI to the Digital Ocean API
 
 ###Installation
 
-- `npm install -g dow`
+`npm install -g dow`
 
 `dow` will look for a `DIGITALOCEAN_ACCESS_TOKEN` environment variable. You can create one [here](https://cloud.digitalocean.com/settings/api/tokens), and surface it by adding the following to your `.profile`/`.bash_profile`/etc.:
 
