@@ -93,3 +93,4 @@ Special Flag                      | Explanation
 `--no-wait`               | Do not wait for actions to move out of 'in-progress' status or for droplets to move out of 'new' status. Without `--no-wait`, `dow` will poll new actions and droplets until they reach a resolution.
 `--no-spin`               | Do not show a spinner
 `--page=<page #>`         | Request an individual page of results (useful for actions + images, and maybe more)
+`--force`                 | Skip confirmation of DELETE methods
