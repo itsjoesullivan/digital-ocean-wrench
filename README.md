@@ -82,7 +82,7 @@ usage: dow droplets create
   [--user_data=<value>]
 ```
 
-Output tries to be common sense, but [logData](./lib/logData.js) is far from complete. You can use `--raw` to get just the JSON response. The JSON combined with a command-line JSON manipulator like [json](https://github.com/trentm/json) give you plenty of flexibility. See the [cookbook](./cookbook.md) for some examples.
+Output tries to be common sense, but [log](./lib/log.js) is far from complete. You can use `--raw` to get just the JSON response. The JSON combined with a command-line JSON manipulator like [json](https://github.com/trentm/json) give you plenty of flexibility. See the [cookbook](./cookbook.md) for some examples.
 
 ###Special flags
 

@@ -103,7 +103,7 @@ if (missingProps.length) {
   process.exit(1);
 }
 
-var logData = require('./lib/logData');
+var logData = require('./lib/log');
 
 var method = getMethod(nameToPropertyName(categoryName), methodName);
 var optionsObject = _.omit(argv, ['token', '_', '$0']);
