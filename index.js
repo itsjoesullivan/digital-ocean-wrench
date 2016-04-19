@@ -96,8 +96,10 @@ var props = Object.keys(argv).filter(function(item) {
 });
 var requiredKeys = _(methodSchema.properties
     .filter(function(prop) { return prop.required; })).map('name').value();
-var missingProps = _.without.apply(_, [requiredKeys].concat(props));
-
+// TODO: make this less confusing
+var missingProps = _.without.apply(_, [requiredKeys]
+    .concat(props)
+    .concat(Object.keys(methodSchema.staticProperties)));
 if (missingProps.length) {
   usage(methodSchema);
   process.exit(1);

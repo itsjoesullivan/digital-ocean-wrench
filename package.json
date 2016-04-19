@@ -1,6 +1,6 @@
 {
   "name": "dow",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "CLI to Digital Ocean API",
   "main": "index.js",
   "author": "",
